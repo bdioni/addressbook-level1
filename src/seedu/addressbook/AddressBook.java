@@ -339,9 +339,17 @@ public class AddressBook {
      * If a file already exists, it must be a regular file.
      */
     private static boolean hasValidFileName(Path filePath) {
-        return filePath.getFileName().toString().lastIndexOf('.') > 0
+        return hasFileExtension(filePath)
                 && (!Files.exists(filePath) || Files.isRegularFile(filePath));
     }
+
+	/**
+	 * Returns true if file path has a file extension, 
+	 * e.g. /some/path/here.jpg
+	 */
+	private static boolean hasFileExtension(Path filePath) {
+		return filePath.getFileName().toString().lastIndexOf('.') > 0;
+	}
 
     /**
      * Initialises the in-memory data using the storage file.
