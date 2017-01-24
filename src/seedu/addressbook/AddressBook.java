@@ -257,16 +257,20 @@ public class AddressBook {
      * @param args full program arguments passed to application main method
      */
     private static void processProgramArgs(String[] args) {
-        if (args.length >= 2) {
+    	
+    	final int NUM_ARGS_IF_FILE_PROVIDED = 1;
+    	final int NUM_ARGS_IF_FILE_NOT_PROVIDED = 0;
+    	
+        if (args.length > NUM_ARGS_IF_FILE_PROVIDED) {
             showToUser(MESSAGE_INVALID_PROGRAM_ARGS);
             exitProgram();
         }
 
-        if (args.length == 1) {
+        if (args.length == NUM_ARGS_IF_FILE_PROVIDED) {
             setupGivenFileForStorage(args[0]);
         }
 
-        if(args.length == 0) {
+        if(args.length == NUM_ARGS_IF_FILE_NOT_PROVIDED) {
             setupDefaultFileForStorage();
         }
     }
