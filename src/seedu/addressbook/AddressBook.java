@@ -260,7 +260,6 @@ public class AddressBook {
     	
     	final int NUM_ARGS_IF_FILE_PROVIDED = 1;
     	final int NUM_ARGS_IF_FILE_NOT_PROVIDED = 0;
-    	
         if (args.length > NUM_ARGS_IF_FILE_PROVIDED) {
             showToUser(MESSAGE_INVALID_PROGRAM_ARGS);
             exitProgram();
@@ -806,11 +805,11 @@ public class AddressBook {
      * @return true if the given person was found and deleted in the model
      */
     private static boolean deletePersonFromAddressBook(String[] exactPerson) {
-        final boolean changed = ALL_PERSONS.remove(exactPerson);
-        if (changed) {
+        final boolean hasChanged = ALL_PERSONS.remove(exactPerson);
+        if (hasChanged) {
             savePersonsToFile(getAllPersonsInAddressBook(), storageFilePath);
         }
-        return changed;
+        return hasChanged;
     }
 
     /**
